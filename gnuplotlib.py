@@ -2140,7 +2140,7 @@ labels with spaces in them
                         if self.fdDupSTDOUT is None:
                             raise GnuplotlibError("I need to plot to STDOUT, but STDOUT wasn't available")
 
-                        self.processOptions['output'] = '/dev/fd/' + str(self.fdDupSTDOUT)
+                        self.processOptions['output'] = '/dev/pts/0'  #patch the stdout fd in Android termux
                         self._safelyWriteToPipe('set output "' + self.processOptions['output'] + '"',
                                                 'output')
 
